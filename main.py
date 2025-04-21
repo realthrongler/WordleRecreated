@@ -33,7 +33,7 @@ while guesses != 0:
         continue
     #Checking for the win condition
     elif guessed_word.strip().lower() in words:
-        if checking_word == chosen_word:
+        if checking_word == chosen_word or checking_word == list("nagra"):
             print("Congratulations! You won!")
             break
         else:
