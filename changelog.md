@@ -14,3 +14,5 @@
 23/04/25
 - Added handling for running out of guesses
 - Added more comments to make code more readable
+- Added play again feature
+- Bug fixes (running out of guesses was not being detected properly)
