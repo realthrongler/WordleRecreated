@@ -18,7 +18,6 @@ for i in range(0, 2309):
 #choosing a random word from the list
 plaintext_word = words[random.randint(0, 2309)]
 chosen_word = list(plaintext_word)
-print(plaintext_word)
 
 guesses = 6
 
