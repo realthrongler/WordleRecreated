@@ -10,13 +10,15 @@ file = open("WordList.txt", "r")
 words = []
 
 #importing words from text file
-for i in range(0, 2308):
+for i in range(0, 2309):
     word = file.readline().strip()
     words.append(word)
 
 
 #choosing a random word from the list
-chosen_word = list(words[random.randint(0, 2308)])
+plaintext_word = words[random.randint(0, 2309)]
+chosen_word = list(plaintext_word)
+print(plaintext_word)
 
 guesses = 6
 
@@ -36,22 +38,29 @@ while guesses != 0:
         if checking_word == chosen_word or checking_word == list("nagra"):
             print("Congratulations! You won!")
             break
+            quit()
         else:
             output = ""
             for char in range(5):
                 for thong in range(5):
                     if original_word[thong] == chosen_word[thong]:
-                        duplicates = original_word[thong]
+                        duplicates = original_word[thong] #Saving the correct letter to check for duplicates
                         checking_word[thong] = "@" #Marking as correct
-                        if duplicates in checking_word:
+                        if duplicates in checking_word: 
+                            #Marking all duplicates as incorrect
                             checking_word[checking_word.index(duplicates)] = "$"
                 if checking_word[char] == "@":
+                    #Checking for correct letters
                     output += colorama.Back.GREEN + original_word[char] + colorama.Style.RESET_ALL + " "
                     guesses -= 1
                 elif checking_word[char] in chosen_word:
+                    #Checking for letters in the word, but in the wrong spot
                     output += colorama.Back.YELLOW + original_word[char] + colorama.Style.RESET_ALL + " "
                     guesses -= 1
                 else:
+                    #All other cases (The letter is not correct)
                     output += original_word[char] + " "
                     guesses -= 1
             print(output)
+if guesses == 0:
+    print("Oh no! You ran out of guesses! The word was: " + plaintext_word)
